@@ -901,7 +901,11 @@ module.exports = function defineGrammar(dialect) {
 
       index_type_query: $ => seq(
         'keyof',
-        $.primary_type,
+        choice(
+          $.primary_type,
+          prec(-2, alias($._type_query_member_expression_in_type_annotation, $.member_expression)),
+          prec(-2, alias($._type_query_call_expression_in_type_annotation, $.call_expression)),
+        ),
       ),
 
       lookup_type: $ => seq(
