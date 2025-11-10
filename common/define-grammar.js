@@ -89,6 +89,7 @@ module.exports = function defineGrammar(dialect) {
       [$.primary_expression, $._parameter_name],
       [$.primary_expression, $._parameter_name, $.primary_type],
       [$.primary_expression, $.literal_type],
+      [$.primary_expression, $.import_type],
       [$.primary_expression, $.literal_type, $.rest_pattern],
       [$.primary_expression, $.predefined_type, $.rest_pattern],
       [$.primary_expression, $.primary_type],
@@ -594,7 +595,7 @@ module.exports = function defineGrammar(dialect) {
       ),
 
       nested_type_identifier: $ => prec('member', seq(
-        field('module', choice($.identifier, $.nested_identifier)),
+        field('module', choice($.identifier, $.nested_identifier, $.import_type)),
         '.',
         field('name', $._type_identifier),
       )),
@@ -728,8 +729,6 @@ module.exports = function defineGrammar(dialect) {
         $.readonly_type,
         $.constructor_type,
         $.infer_type,
-        prec(-1, alias($._type_query_member_expression_in_type_annotation, $.member_expression)),
-        prec(-1, alias($._type_query_call_expression_in_type_annotation, $.call_expression)),
       ),
 
       tuple_parameter: $ => seq(
@@ -785,6 +784,8 @@ module.exports = function defineGrammar(dialect) {
         $.union_type,
         'const',
       ),
+
+      import_type: $ => seq($.import, '(', $.string, ')'),
 
       template_type: $ => seq('${', choice($.primary_type, $.infer_type), '}'),
 
