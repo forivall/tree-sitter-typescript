@@ -440,10 +440,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "call_expression",
-        "named": true
-      },
-      {
         "type": "constructor_type",
         "named": true
       },
@@ -453,10 +449,6 @@
       },
       {
         "type": "infer_type",
-        "named": true
-      },
-      {
-        "type": "member_expression",
         "named": true
       },
       {
@@ -2922,6 +2914,25 @@
     }
   },
   {
+    "type": "import_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "import",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "index_signature",
     "named": true,
     "fields": {
@@ -3001,14 +3012,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "member_expression",
-          "named": true
-        },
         {
           "type": "primary_type",
           "named": true
@@ -3401,16 +3404,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "type_arguments",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -3719,6 +3712,10 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "import_type",
             "named": true
           },
           {
@@ -5691,7 +5688,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "const",
@@ -5775,7 +5773,8 @@
   },
   {
     "type": "html_comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "if",
@@ -5843,11 +5842,11 @@
   },
   {
     "type": "number",
-    "named": true
+    "named": false
   },
   {
     "type": "number",
-    "named": false
+    "named": true
   },
   {
     "type": "object",

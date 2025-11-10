@@ -8369,6 +8369,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "nested_identifier"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "import_type"
                 }
               ]
             }
@@ -9101,32 +9105,6 @@
         {
           "type": "SYMBOL",
           "name": "infer_type"
-        },
-        {
-          "type": "PREC",
-          "value": -1,
-          "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_type_query_member_expression_in_type_annotation"
-            },
-            "named": true,
-            "value": "member_expression"
-          }
-        },
-        {
-          "type": "PREC",
-          "value": -1,
-          "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_type_query_call_expression_in_type_annotation"
-            },
-            "named": true,
-            "value": "call_expression"
-          }
         }
       ]
     },
@@ -9394,6 +9372,27 @@
         {
           "type": "STRING",
           "value": "const"
+        }
+      ]
+    },
+    "import_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "import"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
         }
       ]
     },
@@ -9983,39 +9982,8 @@
           "value": "keyof"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "primary_type"
-            },
-            {
-              "type": "PREC",
-              "value": -2,
-              "content": {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_type_query_member_expression_in_type_annotation"
-                },
-                "named": true,
-                "value": "member_expression"
-              }
-            },
-            {
-              "type": "PREC",
-              "value": -2,
-              "content": {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_type_query_call_expression_in_type_annotation"
-                },
-                "named": true,
-                "value": "call_expression"
-              }
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "primary_type"
         }
       ]
     },
@@ -11262,6 +11230,10 @@
     ],
     [
       "primary_expression",
+      "import_type"
+    ],
+    [
+      "primary_expression",
       "literal_type",
       "rest_pattern"
     ],
@@ -12012,5 +11984,6 @@
     "pattern",
     "type",
     "primary_type"
-  ]
+  ],
+  "reserved": {}
 }
