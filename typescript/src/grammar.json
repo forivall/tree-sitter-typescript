@@ -8367,8 +8367,13 @@
                   "name": "identifier"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "nested_identifier"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "nested_type_identifier"
+                  },
+                  "named": true,
+                  "value": "member_expression"
                 },
                 {
                   "type": "SYMBOL",
@@ -11199,13 +11204,12 @@
       "_type_query_member_expression_in_type_annotation"
     ],
     [
-      "nested_identifier",
       "nested_type_identifier",
       "primary_expression"
     ],
     [
-      "nested_identifier",
-      "nested_type_identifier"
+      "import_type",
+      "primary_expression"
     ],
     [
       "_call_signature",
@@ -11227,10 +11231,6 @@
     [
       "primary_expression",
       "literal_type"
-    ],
-    [
-      "primary_expression",
-      "import_type"
     ],
     [
       "primary_expression",

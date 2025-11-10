@@ -3366,9 +3366,37 @@
     "type": "member_expression",
     "named": true,
     "fields": {
+      "module": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "import_type",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_identifier",
+            "named": true
+          }
+        ]
+      },
       "object": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "expression",
@@ -3392,7 +3420,7 @@
       },
       "property": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "private_property_identifier",
@@ -3719,7 +3747,7 @@
             "named": true
           },
           {
-            "type": "nested_identifier",
+            "type": "member_expression",
             "named": true
           }
         ]

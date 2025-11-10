@@ -80,8 +80,8 @@ module.exports = function defineGrammar(dialect) {
       [$.class],
       [$._type_query_member_expression_in_type_annotation],
 
-      [$.nested_identifier, $.nested_type_identifier, $.primary_expression],
-      [$.nested_identifier, $.nested_type_identifier],
+      [$.nested_type_identifier, $.primary_expression],
+      [$.import_type, $.primary_expression],
 
       [$._call_signature, $.function_type],
       [$._call_signature, $.constructor_type],
@@ -89,7 +89,6 @@ module.exports = function defineGrammar(dialect) {
       [$.primary_expression, $._parameter_name],
       [$.primary_expression, $._parameter_name, $.primary_type],
       [$.primary_expression, $.literal_type],
-      [$.primary_expression, $.import_type],
       [$.primary_expression, $.literal_type, $.rest_pattern],
       [$.primary_expression, $.predefined_type, $.rest_pattern],
       [$.primary_expression, $.primary_type],
@@ -595,11 +594,15 @@ module.exports = function defineGrammar(dialect) {
       ),
 
       nested_type_identifier: $ => prec('member', seq(
-        field('module', choice($.identifier, $.nested_identifier, $.import_type)),
+        field('module', choice($.identifier, alias($.nested_type_identifier, $.member_expression), $.import_type)),
         '.',
         field('name', $._type_identifier),
       )),
-
+      // nested_identifier: $ => prec('member', seq(
+      //   field('object', choice($.identifier, alias($.nested_identifier, $.member_expression))),
+      //   '.',
+      //   field('property', alias($.identifier, $.property_identifier)),
+      // )),
       interface_declaration: $ => seq(
         'interface',
         field('name', $._type_identifier),
